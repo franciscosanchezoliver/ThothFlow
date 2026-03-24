@@ -1,48 +1,29 @@
-# ThothFlow
+# ThothFlow: Orchestrating Git Repos as Tasks
 
-Simple framework for orchestrating LLM workflows.
+Each git repo is a task and each repo defines:
+- Input Contract
+- Output Contract
 
-It provides simple, abstractions for:
-- Agents
-- Language models
-- State management
-- Execution graphs
+A Work is a graph of repos, connected via inputs/output. The work defines a 
+flow (orchestration layer between repos).
 
-The goal is to make it easy to experiment with structured reasoning systems,
-inspired by frameworks like LangGraph, but with a minimal and flexible design.
+Each repo become a reusable black box (like microservices).
 
-## Example
+Once a repo (task) is written, it can be orchestrated in multiple flows
 
-```python
-flow = Flow()
+## Advantages:
 
-flow.add_node("agent", AgentNode(...))
-flow.add_edge("start", "agent")
+### Reusability
 
-flow.run(input_data)
+As each repo does a task, it can be orchestrated in multiple flows. 
+Makes projects composable in a structured way.
 
 
+### Language Agnostic
 
-A "Work" is like a graph, something difficult to do.
+The idea is to be able to make projects composable, language agnostic (you don't 
+care what language was used to resolve the problem). 
 
-While each "Task" is a node in the grap. 
+### Decentralized Orchestration
 
-The idea is that a work is resolved by dividing the work 
-in tasks
-
-Tasks -> A Node in the graph
-
-Each task receive:
-- Something to do: a function/a class with a function run (logic)
-- An intelligence, an LLM (here we can pass several ones) (Intelligence)
-- A series of tools that can be use to do the task (Tools)
-
-A complex problem (Work) is solved by coordinating smaller intelligent units (Tasks)
-
-
-🧠 Final mental model (very clean)
-Work (Flow) → orchestrates
-Task (Node) → executes logic
-Agent → provides intelligence
-Tools → used by Agent
-Scroll (State) → shared data
+Repositories can be on GitHub, GitLab, a private Git server, or a combination.
