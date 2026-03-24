@@ -1,0 +1,12 @@
+[project]
+name = "thothflow"
+version = "0.1.0"
+dependencies = [
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "black",
+]
